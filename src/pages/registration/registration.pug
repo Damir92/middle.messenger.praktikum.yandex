@@ -1,0 +1,15 @@
+extends ../../layout/main/main-layout.pug
+
+include ../../modules/form/form.pug
+
+block title
+    title Регистрация
+
+block content
+    body
+        .registration-page
+            .registration-page__form-wrap
+                +registration-form()
+                
+
+        script(src='./registration.js' type='module')

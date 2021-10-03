@@ -1,0 +1,41 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  min-width: 340px;
+  min-height: 460px;
+  padding: 50px 30px 30px;
+
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+}
+
+.form__title {
+  margin-bottom: 40px;
+
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: #1e1e1e;
+}
+
+.form__link {
+  align-self: center;
+  margin-top: 14px;
+
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 11px;
+  color: #3369f3;
+  text-decoration: none;
+
+  transition: all 0.1s ease-in;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 0.8;
+  }
+}

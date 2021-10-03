@@ -1,0 +1,13 @@
+extends ../../layout/main/main-layout.pug
+
+include ../../modules/error-page/error-page.pug
+
+block title
+    title 500
+
+block content
+    body
+        +error-page({ error: '500', description: 'Мы уже фиксим' })
+
+        script(src='./500.js' type='module')
+    

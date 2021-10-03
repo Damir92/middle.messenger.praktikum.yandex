@@ -1,0 +1,20 @@
+extends ../../layout/main/main-layout.pug
+
+block title
+    title Index page
+
+block content
+    body(style='display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 200px;')
+        ul(style='display: flex; flex-direction: column; row-gap: 20px; font-size: 18px;')
+            li 
+                a(href='../auth/auth.pug') Авторизация
+            li 
+                a(href='../registration/registration.pug') Регистрация
+            li 
+                a(href='../profile/profile.pug') Профиль
+            li 
+                a(href='../chats/chats.pug') Список чатов
+            li 
+                a(href='../404/404.pug') 404
+            li 
+                a(href='../500/500.pug') 500

@@ -1,0 +1,27 @@
+.button {
+  width: 100%;
+  margin-top: auto;
+  padding: 11px;
+
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  color: #ffffff;
+
+  background: #3369f3;
+  border: 1px solid #3369f3;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+
+  transition: all 0.1s ease-in;
+
+  &:hover,
+  &:focus-visible {
+    color: #3369f3;
+
+    background-color: white;
+    opacity: 0.8;
+  }
+}

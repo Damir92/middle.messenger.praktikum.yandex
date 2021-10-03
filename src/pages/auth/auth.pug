@@ -1,0 +1,16 @@
+extends ../../layout/main/main-layout.pug
+
+include ../../modules/form/form.pug
+
+block title
+    title Авторизация
+
+block content
+    body
+        .auth-page
+            .auth-page__form-wrap
+                +auth-form()
+                
+
+        script(src='./auth.js' type='module')
+        

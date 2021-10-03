@@ -1,0 +1,13 @@
+extends ../../layout/main/main-layout.pug
+
+include ../../modules/error-page/error-page.pug
+
+block title
+    title 404
+
+block content
+    body
+        +error-page({ error: '404', description: 'Не туда попали' })
+
+        script(src='./404.js' type='module')
+    

@@ -1,0 +1,25 @@
+include ../../components/form-input/form-input
+include ../../components/button/button
+
+mixin auth-form()
+    form(action="POST")
+        .form
+            h1.form__title Вход
+            +form-input({ inputType: "text", name: "login", label: "Логин", error: "Неверный логин" })
+            +form-input({ inputType: "password", name: "password", label: "Пароль", error: "Неверный пароль" })
+            +button({ type: "submit", text: "Войти" })
+            a.form__link(href="#") Нет аккаунта?
+
+mixin registration-form()
+    form(action="POST")
+        .form
+            h1.form__title Регистрация
+            +form-input({ inputType: "email", name: "email", label: "Почта", error: "Неверный email" })
+            +form-input({ inputType: "text", name: "login", label: "Логин" })
+            +form-input({ inputType: "text", name: "first_name", label: "Имя" })
+            +form-input({ inputType: "text", name: "second_name", label: "Фамилия" })
+            +form-input({ inputType: "phone", name: "phone", label: "Телефон" })
+            +form-input({ inputType: "password", name: "password", label: "Пароль", error: "Неверный пароль" })
+            +form-input({ inputType: "password", label: "Пароль (ещё раз)", error: "Пароли не совпадают" })
+            +button({ type: "submit", text: "Зарегистрироваться" })
+            a.form__link(href="#") Войти
