@@ -6,11 +6,11 @@ block title
     title Авторизация
 
 block content
-    body
+    main
         .auth-page
             .auth-page__form-wrap
                 +auth-form()
-                
 
-        script(src='./auth.js' type='module')
+block scripts
+    script(src='./auth.js' type='module')
         

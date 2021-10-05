@@ -6,7 +6,7 @@ block title
     title Профиль
 
 block content
-    body
+    main
         .profile.js-profile
             button.profile__btn-back.js-profile-back(type='button' aria-label='Назад')
                 svg(width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg')
@@ -31,5 +31,6 @@ block content
                     button.profile__btn.profile__btn--red(type='button') Выйти
                 
 
-        script(src='./profile.js' type='module')
+block scripts
+    script(src='./profile.js' type='module')
         

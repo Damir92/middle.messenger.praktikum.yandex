@@ -6,8 +6,9 @@ block title
     title 404
 
 block content
-    body
+    main
         +error-page({ error: '404', description: 'Не туда попали' })
 
-        script(src='./404.js' type='module')
+block scripts
+    script(src='./404.js' type='module')
     

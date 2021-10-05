@@ -6,10 +6,10 @@ block title
     title Регистрация
 
 block content
-    body
+    main
         .registration-page
             .registration-page__form-wrap
                 +registration-form()
-                
 
-        script(src='./registration.js' type='module')
+block scripts
+    script(src='./registration.js' type='module')
