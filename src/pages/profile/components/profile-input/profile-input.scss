@@ -16,7 +16,7 @@
 
   border-width: 1px 0 0;
   border-style: solid;
-  border-color: #eaeaea;
+  border-color: $gray-2;
 }
 
 .profile-input__label-text {
@@ -25,7 +25,7 @@
 
   font-size: 13px;
   line-height: 13px;
-  color: #1e1e1e;
+  color: $dark;
 }
 
 .profile-input__input {
@@ -36,9 +36,9 @@
   font-size: 13px;
   line-height: 13px;
   text-align: right;
-  color: #999999;
+  color: $gray-1;
 
-  background-color: white;
+  background-color: $white;
   border: none;
   border-radius: none;
   outline: none;

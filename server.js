@@ -3,9 +3,9 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-const API_PREFIX = '/dist';
+const DIST_FOLDER = '/dist';
 
-app.use(express.static(`${__dirname}${API_PREFIX}/`));
+app.use(express.static(`${__dirname}${DIST_FOLDER}/`));
 
 app.listen(PORT, function () {
   console.log(`App listening on port ${PORT}!`);

@@ -4,8 +4,8 @@ block title
     title Index page
 
 block content
-    main(style='display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 200px;')
-        ul(style='display: flex; flex-direction: column; row-gap: 20px; font-size: 18px;')
+    main.index-page
+        ul.index-page__list
             li 
                 a(href='../auth/auth.pug') Авторизация
             li 
@@ -18,3 +18,6 @@ block content
                 a(href='../404/404.pug') 404
             li 
                 a(href='../500/500.pug') 500
+
+block scripts 
+    script(src='./index.js' type='module')

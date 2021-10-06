@@ -9,8 +9,8 @@
   width: 310px;
   padding: 20px 10px 0;
 
-  background-color: #fbfbfb;
-  border-right: 1px solid #eaeaea;
+  background-color: $gray-4;
+  border-right: 1px solid $gray-2;
 }
 
 .chats__body {
@@ -28,7 +28,7 @@
   flex-shrink: 0;
   padding-bottom: 10px;
 
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid $gray-2;
 }
 
 .chats__friend {
@@ -40,7 +40,7 @@
   font-weight: 600;
   font-size: 13px;
   line-height: 13px;
-  color: #1e1e1e;
+  color: $dark;
 
   &::before {
     content: "";
@@ -51,7 +51,7 @@
     height: 34px;
     margin-right: 10px;
 
-    background-color: #efefef;
+    background-color: $gray-3;
     border-radius: 50%;
   }
 }
@@ -63,7 +63,7 @@
 .chats__bottom {
   flex-shrink: 0;
 
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid $gray-2;
 }
 
 .chats__bottom-wrap {
@@ -75,12 +75,29 @@
   column-gap: 10px;
 }
 
+.chats__attach {
+  width: 32px;
+  height: 32px;
+
+  background-image: url("../../../static/svg/icon-attach.svg");
+  background-size: contain;
+}
+
+.chats__send {
+  width: 28px;
+  height: 28px;
+
+  background-image: url("../../../static/svg/icon-send.svg");
+  background-size: contain;
+}
+
 .chats__attach,
 .chats__send {
   flex-shrink: 0;
   padding: 0;
 
-  background-color: rgba(black, 0);
+  background-color: rgba($black, 0);
+  background-repeat: no-repeat;
   border: none;
   box-shadow: none;
 
@@ -95,9 +112,9 @@
 
   font-size: 12px;
   line-height: 12px;
-  color: #999999;
+  color: $gray-1;
 
-  background-color: #efefef;
+  background-color: $gray-3;
   border: none;
   border-radius: 30px;
   outline: none;

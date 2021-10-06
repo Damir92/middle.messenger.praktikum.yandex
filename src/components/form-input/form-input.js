@@ -5,7 +5,7 @@ export const formLabel = () => {
     const activeClass = 'is-active';
     const items = document.querySelectorAll('.js-form-label');
 
-    items.forEach(item => {
+    items?.forEach(item => {
         const input = item.querySelector('input');
 
         if (input) {

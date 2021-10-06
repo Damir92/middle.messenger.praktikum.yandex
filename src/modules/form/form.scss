@@ -7,9 +7,9 @@
   min-height: 460px;
   padding: 50px 30px 30px;
 
-  background-color: white;
+  background-color: $white;
   border-radius: 12px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0 6px rgba($black, 0.14);
 }
 
 .form__title {
@@ -19,7 +19,7 @@
   font-size: 20px;
   line-height: 20px;
   text-align: center;
-  color: #1e1e1e;
+  color: $dark;
 }
 
 .form__link {
@@ -29,7 +29,7 @@
   font-weight: 500;
   font-size: 11px;
   line-height: 11px;
-  color: #3369f3;
+  color: $blue;
   text-decoration: none;
 
   transition: all 0.1s ease-in;

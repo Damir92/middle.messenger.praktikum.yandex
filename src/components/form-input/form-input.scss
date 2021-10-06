@@ -36,7 +36,7 @@
   font-weight: 500;
   font-size: 13px;
   line-height: 13px;
-  color: #999999;
+  color: $gray-1;
 
   transition: all 0.1s ease-out;
 }
@@ -48,10 +48,10 @@
 
   font-size: 13px;
   line-height: 13px;
-  color: #1e1e1e;
+  color: $dark;
 
   border-width: 0 0 1px 0;
-  border-color: #3369f3;
+  border-color: $blue;
   border-radius: none;
   outline: none;
 }
@@ -62,5 +62,5 @@
 
   font-size: 8px;
   line-height: 8px;
-  color: #ff2f2f;
+  color: $red-1;
 }
