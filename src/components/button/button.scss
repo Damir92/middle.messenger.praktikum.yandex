@@ -1,0 +1,27 @@
+.button {
+  width: 100%;
+  margin-top: auto;
+  padding: 11px;
+
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  color: $white;
+
+  background: $blue;
+  border: 1px solid $blue;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+
+  transition: all 0.1s ease-in;
+
+  &:hover,
+  &:focus-visible {
+    color: $blue;
+
+    background-color: $white;
+    opacity: 0.8;
+  }
+}

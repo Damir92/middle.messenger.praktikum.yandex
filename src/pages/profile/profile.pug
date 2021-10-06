@@ -1,0 +1,36 @@
+extends ../../layout/main/main-layout.pug
+
+include ./modules/profile-form/profile-form.pug
+
+block title
+    title Профиль
+
+block content
+    main
+        .profile.js-profile
+            button.profile__btn-back.js-profile-back(type='button' aria-label='Назад')
+                svg(width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg')
+                    circle(cx='14' cy='14' r='14' transform='rotate(-180 14 14)' fill='#3369F3')
+                    path(fill='#fff' d='M20 14.8H9v-1.6h11z')
+                    path(d='m13 19-4-5 4-5' stroke='#fff' stroke-width='1.6')
+            .profile__form-wrap
+                .profile__photo
+                    form(action='POST')
+                        label.profile__photo-label
+                            | Поменять аватар
+                            input(type='file' name='avatar')
+                h1.profile__name Иван
+
+                +profile-form()
+
+                +change-password-form()
+
+                .profile__btns
+                    button.profile__btn.js-edit-profile(type='button') Изменить данные
+                    button.profile__btn.js-edit-password(type='button') Изменить пароль
+                    button.profile__btn.profile__btn--red(type='button') Выйти
+                
+
+block scripts
+    script(src='./profile.js' type='module')
+        

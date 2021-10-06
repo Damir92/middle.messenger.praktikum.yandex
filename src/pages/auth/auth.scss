@@ -1,0 +1,17 @@
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+
+  background-color: $white;
+}
+
+.auth-page__form-wrap {
+  height: fit-content;
+  max-height: 100%;
+}

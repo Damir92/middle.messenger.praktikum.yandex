@@ -1,0 +1,21 @@
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 40px;
+
+  .button {
+    display: none;
+    max-width: 280px;
+    margin: 50px auto 0;
+  }
+
+  &--password {
+    display: none;
+
+    .button {
+      margin-top: 130px;
+    }
+  }
+}

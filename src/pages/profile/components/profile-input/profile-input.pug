@@ -1,0 +1,5 @@
+mixin profile-input({ inputType, name, label, value })
+    .profile-input
+        label.profile-input__label.js-form-label
+            span.profile-input__label-text= label
+            input.profile-input__input.js-profile-input(type=inputType name=name value=value disabled)

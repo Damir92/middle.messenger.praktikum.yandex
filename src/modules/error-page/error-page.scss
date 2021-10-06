@@ -1,0 +1,35 @@
+.error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.error-page__number {
+  margin-bottom: 20px;
+
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: $dark;
+}
+
+.error-page__description {
+  margin-bottom: 70px;
+
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: $dark;
+}
+
+.error-page__link {
+  font-size: 11px;
+  line-height: 11px;
+  text-align: center;
+  color: $blue;
+  text-decoration: none;
+}
