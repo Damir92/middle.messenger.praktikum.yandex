@@ -4,20 +4,7 @@ block title
     title Список чатов
 
 block content
-    main
-        .chats
-            .chats__info
-
-            .chats__body
-                .chats__top
-                    .chats__friend Вадим
-                .chats__main
-                .chats__bottom
-                    form(method='POST')
-                        .chats__bottom-wrap
-                            button.chats__attach(type='button')
-                            input.chats__input(type='text' name='message' placeholder='Сообщение')
-                            button.chats__send(type='submit')
+    main.root
 
 block scripts
-    script(src='./chats.js' type='module')
+    script(src='./chats.ts' type='module')

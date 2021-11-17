@@ -1,3 +1,55 @@
+.form-input {
+  &.is-error {
+    .form-error {
+      display: block;
+    }
+  }
+
+  label {
+    position: relative;
+
+    display: block;
+    padding-top: 10px;
+
+    &.is-active {
+      span {
+        top: 1px;
+
+        font-size: 9px;
+        line-height: 9px;
+      }
+    }
+  }
+
+  input {
+    width: 100%;
+    margin: 0;
+    padding: 7px 0;
+
+    font-size: 13px;
+    line-height: 13px;
+    color: $dark;
+
+    border-width: 0 0 1px 0;
+    border-color: $blue;
+    border-radius: none;
+    outline: none;
+  }
+
+  span {
+    position: absolute;
+    top: 18px;
+    left: 0;
+
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: $gray-1;
+
+    transition: all 0.1s ease-out;
+  }
+}
+
 .form__input-wrap {
   margin-bottom: 16px;
 
@@ -56,7 +108,7 @@
   outline: none;
 }
 
-.form__error {
+.form-error {
   display: none;
   margin-top: 7px;
 

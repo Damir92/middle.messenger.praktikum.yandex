@@ -1,16 +1,10 @@
 extends ../../layout/main/main-layout.pug
 
-include ../../modules/form/form.pug
-
 block title
     title Авторизация
 
 block content
-    main
-        .auth-page
-            .auth-page__form-wrap
-                +auth-form()
+    main.root
 
 block scripts
-    script(src='./auth.js' type='module')
-        
+    script(src='./auth.ts' type='module')

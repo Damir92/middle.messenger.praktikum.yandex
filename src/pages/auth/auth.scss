@@ -9,6 +9,14 @@
   padding: 20px;
 
   background-color: $white;
+
+  .form-input {
+    margin-bottom: 16px;
+
+    & + div:not(.form-input) {
+      margin-top: auto;
+    }
+  }
 }
 
 .auth-page__form-wrap {

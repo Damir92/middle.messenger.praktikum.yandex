@@ -26,6 +26,7 @@
       &--data {
         display: none;
       }
+
       &--password {
         display: flex;
       }
@@ -41,16 +42,25 @@
   }
 }
 
-.profile__btn-back {
+.profile__btn-container {
   position: sticky;
   top: 0;
+  height: 100vh;
 
+  div {
+    height: 100%;
+  }
+}
+
+.profile__btn-back {
   display: flex;
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 18px;
+  box-sizing: content-box;
+  width: 28px;
+  height: 100%;
+  padding: 0 18px;
 
   background-color: $gray-4;
   background-image: url("../../../static/svg/icon-back.svg");
@@ -143,6 +153,12 @@
   color: $dark;
 }
 
+.profile__btns {
+  div:first-child button {
+    border: none;
+  }
+}
+
 .profile__btn {
   display: block;
   width: 100%;
@@ -163,10 +179,6 @@
 
   &:hover {
     color: rgba($blue, 0.8);
-  }
-
-  &:first-of-type {
-    border: none;
   }
 
   &--red {
