@@ -4,7 +4,7 @@
   "description": "Messenger",
   "scripts": {
     "start": "rm -rf ./dist && parcel ./src/pages/index/index.pug -p 3000",
-    "build": "rm -rf ./dist && parcel build ./src/pages/index/index.pug",
+    "build": "rm -rf ./dist && parcel build ./src/pages/index/index.pug --dist-dir dist",
     "test": "eslint '**/*.ts' && npx stylelint '**/*.scss'"
   },
   "repository": {
