@@ -4,8 +4,8 @@
   "description": "Messenger",
   "scripts": {
     "dev": "rm -rf ./dist && parcel ./src/pages/index/index.pug -p 3000",
-    "start": "rm -rf ./dist && parcel build ./src/pages/index/index.pug -p 3000 && node ./server.js",
     "build": "rm -rf ./dist && parcel build ./src/pages/index/index.pug --dist-dir dist",
+    "start": "npm run build && node ./server.js",
     "test": "eslint '**/*.ts' && npx stylelint '**/*.scss'"
   },
   "repository": {
