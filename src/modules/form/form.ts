@@ -75,9 +75,7 @@ class Form extends Block {
 
         this.formSubmitHandler = this.props.callback.bind(this);
 
-        setTimeout(() => {
-            this.element.addEventListener('submit', this.formSubmitHandler)
-        }, 100);
+        this.element.addEventListener('submit', this.formSubmitHandler)
 
         return true;
     }

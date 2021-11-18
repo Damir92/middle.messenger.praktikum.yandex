@@ -60,11 +60,11 @@ class Block {
     public componentDidMount() {}
 
     private _componentDidUpdate() {
+        this._render();
         const response = this.componentDidUpdate();
         if (!response) {
             return;
         }
-        this._render();
     }
 
     // Может переопределять пользователь, необязательно трогать
@@ -97,17 +97,17 @@ class Block {
     public renderElement (query: string, block: Block) {
         let root = null;
         if (query) {
-            root = this.getContent().querySelector(query);
+            root = this.getElement().querySelector(query);
         } else {
             root = this.element;
         }
 
         if (root) {
-            root.appendChild(block.getContent());
+            root.appendChild(block.getElement());
         }
     }
 
-    public getContent() {
+    public getElement() {
         return this.element;
     }
 
@@ -136,11 +136,11 @@ class Block {
     }
 
     public show() {
-        this.getContent().style.display = 'block';
+        this.getElement().style.display = 'block';
     }
 
     public hide() {
-        this.getContent().style.display = 'none';
+        this.getElement().style.display = 'none';
     }
 }
 

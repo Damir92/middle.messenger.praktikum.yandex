@@ -7,10 +7,10 @@
   font-size: 13px;
   line-height: 13px;
   text-align: center;
-  color: $white;
+  color: $lightFont;
 
-  background-color: $blue;
-  border: 1px solid $blue;
+  background-color: $accent;
+  border: 1px solid $accent;
   border-radius: 8px;
   outline: none;
   cursor: pointer;
@@ -19,9 +19,9 @@
 
   &:hover,
   &:focus-visible {
-    color: $blue;
+    color: $accent;
 
-    background-color: $white;
+    background-color: $background;
     opacity: 0.8;
   }
 }

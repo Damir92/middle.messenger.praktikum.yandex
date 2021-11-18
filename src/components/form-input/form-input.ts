@@ -65,6 +65,7 @@ class FormInput extends Block {
         this.inputElement?.addEventListener('blur', this.validateHandler);
         this.inputElement?.addEventListener('focus', this.validateHandler);
         this.inputElement?.addEventListener('input', this.inputHandler);
+
         if (this.props.withLabelAnimation) {
             this.inputElement?.addEventListener('input', this.labelAnimationHandler);
             this.labelAnimationHandler();
@@ -79,19 +80,17 @@ class FormInput extends Block {
 
         this.validateHandler = this.props.validateCallback?.bind(this);
 
-        setTimeout(() => {
-            this.inputElement = this.element.querySelector('input');
-            this.labelElement = this.element.querySelector('label');
+        this.inputElement = this.element.querySelector('input');
+        this.labelElement = this.element.querySelector('label');
 
-            this.inputElement?.addEventListener('blur', this.validateHandler);
-            this.inputElement?.addEventListener('focus', this.validateHandler);
-            this.inputElement?.addEventListener('input', this.inputHandler);
+        this.inputElement?.addEventListener('blur', this.validateHandler);
+        this.inputElement?.addEventListener('focus', this.validateHandler);
+        this.inputElement?.addEventListener('input', this.inputHandler);
 
-            if (this.props.withLabelAnimation) {
-                this.inputElement?.addEventListener('input', this.labelAnimationHandler);
-                this.labelAnimationHandler();
-            }
-        }, 100)
+        if (this.props.withLabelAnimation) {
+            this.inputElement?.addEventListener('input', this.labelAnimationHandler);
+            this.labelAnimationHandler();
+        }
 
         return true;
     }

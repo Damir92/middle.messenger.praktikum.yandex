@@ -38,9 +38,7 @@ class Button extends Block {
 
         this.clickHandler = this.props.callback?.bind(this);
 
-        setTimeout(() => {
-            this.element.querySelector('button')?.addEventListener('click', this.clickHandler)
-        }, 100);
+        this.element.querySelector('button')?.addEventListener('click', this.clickHandler)
 
         return true;
     }
