@@ -4,20 +4,20 @@ block title
     title Index page
 
 block content
-    main.index-page
+    main.index-page.root
         ul.index-page__list
-            li 
+            li
                 a(href='../auth/auth.pug') Авторизация
-            li 
+            li
                 a(href='../registration/registration.pug') Регистрация
-            li 
+            li
                 a(href='../profile/profile.pug') Профиль
-            li 
+            li
                 a(href='../chats/chats.pug') Список чатов
-            li 
+            li
                 a(href='../404/404.pug') 404
-            li 
+            li
                 a(href='../500/500.pug') 500
 
-block scripts 
-    script(src='./index.js' type='module')
+block scripts
+    script(src='./index.ts' type='module')

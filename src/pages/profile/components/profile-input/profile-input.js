@@ -1,1 +1,0 @@
-import './profile-input.scss';

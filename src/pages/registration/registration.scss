@@ -1,17 +1,29 @@
 .registration-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 20px;
-  
-    background-color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+
+  background-color: $background;
+
+  .form-input {
+    margin-bottom: 16px;
+
+    & + div:not(.form-input) {
+      margin-top: auto;
+    }
   }
-  
-  .registration-page__form-wrap {
-    height: fit-content;
-    max-height: 100%;
+
+  .button {
+    margin-top: 46px;
   }
+}
+
+.registration-page__form-wrap {
+  height: fit-content;
+  max-height: 100%;
+}

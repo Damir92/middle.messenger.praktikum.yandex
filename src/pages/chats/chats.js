@@ -1,1 +1,0 @@
-import './chats.scss';
