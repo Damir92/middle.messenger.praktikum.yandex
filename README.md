@@ -14,3 +14,4 @@
 ### Ссылки на Pull requests
 - Спринт 1 - https://github.com/Damir92/middle.messenger.praktikum.yandex/pull/1
 - Спринт 2 - https://github.com/Damir92/middle.messenger.praktikum.yandex/pull/2
+- Спринт 3 - https://github.com/Damir92/middle.messenger.praktikum.yandex/pull/3
