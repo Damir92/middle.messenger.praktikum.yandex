@@ -20,6 +20,7 @@ class FormInput extends Block {
             label: inputProps.label,
             value: inputProps.value,
             disabled: inputProps.disabled,
+            autocomplete: inputProps.autocomplete,
             error: inputProps.error,
             withLabelAnimation: inputProps.withLabelAnimation,
             validateCallback: inputProps.validateCallback
@@ -32,6 +33,10 @@ class FormInput extends Block {
 
     private labelAnimationHandler(): void {
         const activeClass = 'is-active';
+
+        if (!this.inputElement?.value.trimStart()) {
+            this.setProps({ value: this.inputElement?.value.trimStart() });
+        }
 
         if (this.inputElement?.value.length) {
             this.labelElement?.classList.add(activeClass);
@@ -47,6 +52,7 @@ class FormInput extends Block {
             label: this.props.label,
             value: this.props.value,
             disabled: this.props.disabled,
+            autocomplete: this.props.autocomplete,
             error: this.props.error
         })
         return pug.render(content);
@@ -68,6 +74,7 @@ class FormInput extends Block {
 
         if (this.props.withLabelAnimation) {
             this.inputElement?.addEventListener('input', this.labelAnimationHandler);
+            this.inputElement?.addEventListener('change', this.labelAnimationHandler);
             this.labelAnimationHandler();
         }
     }
@@ -89,6 +96,7 @@ class FormInput extends Block {
 
         if (this.props.withLabelAnimation) {
             this.inputElement?.addEventListener('input', this.labelAnimationHandler);
+            this.inputElement?.addEventListener('change', this.labelAnimationHandler);
             this.labelAnimationHandler();
         }
 

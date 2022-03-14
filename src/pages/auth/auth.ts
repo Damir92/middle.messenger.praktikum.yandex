@@ -9,13 +9,18 @@ import { Button } from '../../components/button/button';
 
 import { inputValidation } from '../../utils/validation';
 
-import { authForm, authPage, formLink } from './auth.template';
+import { AuthController } from '../../services/auth';
 
-class AuthPage extends Block {
+import { authForm, authPage, formLink } from './auth.template';
+import { authType } from './auth.types';
+
+export class AuthPage extends Block {
     private form: Form
 
     constructor() {
         super('div');
+
+        this.sendForm = this.sendForm.bind(this);
     }
 
     private inputValidateHandler(component: FormInput): void {
@@ -28,11 +33,18 @@ class AuthPage extends Block {
         }
     }
 
+    public sendForm(form: authType): void {
+        console.log('form', form)
+        const { login, password } = form;
+        console.log(AuthController)
+        new AuthController().signIn({ login, password })
+    }
+
     private createForm(): void {
         this.form = new Form({
             method: 'POST',
             template: authForm,
-            submitCallback: () => {}
+            submitCallback: this.sendForm
         });
 
         this.renderElement('.auth-page__form-wrap', this.form);
@@ -85,23 +97,13 @@ class AuthPage extends Block {
         this.element.classList.add('auth-page');
 
         this.createForm();
+
+        // setTimeout(() => {
+        //     new AuthController().signOut()
+        // }, 3000)
     }
 
     public componentDidUpdate(): boolean {
         return true;
     }
 }
-
-const render = (query: string, block: Block) => {
-    const root = document.querySelector(query);
-
-    if (root) {
-        root.appendChild(block.getElement());
-    }
-
-    return root;
-};
-
-const page = new AuthPage();
-
-render('.root', page);

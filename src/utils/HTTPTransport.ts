@@ -1,3 +1,5 @@
+import { queryStringify } from './queryString';
+
 enum METHODS {
     GET = 'GET',
     POST = 'POST',
@@ -12,34 +14,30 @@ type OptionsType = {
     timeout?: number,
 }
 
-function queryStringify(data: Record<string, string | number | object>) {
-    if (typeof data !== 'object') {
-        throw new Error('Data must be object');
+class HTTPTransport {
+    private readonly prefix: string;
+
+    constructor(prefix: string) {
+        this.prefix = prefix;
     }
 
-    const keys = Object.keys(data);
-
-    return `?${keys.map(key => `${key}=${data[key]}`).join('&')}`;
-}
-
-class HTTPTransport {
     public get = (url: string, options: OptionsType = {}) => {
-        return this.request(url, {...options, method: METHODS.GET}, options.timeout);
+        return this.request(`${this.prefix}${url}`, {...options, method: METHODS.GET}, options.timeout);
     };
 
     public post = (url: string, options: OptionsType = {}) => {
-        return this.request(url, {...options, method: METHODS.POST}, options.timeout);
+        return this.request(`${this.prefix}${url}`, {...options, method: METHODS.POST}, options.timeout);
     };
 
     public put = (url: string, options: OptionsType = {}) => {
-        return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
+        return this.request(`${this.prefix}${url}`, {...options, method: METHODS.PUT}, options.timeout);
     };
 
     public delete = (url: string, options: OptionsType = {}) => {
-        return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
+        return this.request(`${this.prefix}${url}`, {...options, method: METHODS.DELETE}, options.timeout);
     };
 
-    request = (url: string, options: OptionsType = {}, timeout = 5000) => {
+    public request = (url: string, options: OptionsType = {}, timeout = 5000) => {
         const {headers = {}, method, data} = options;
 
         return new Promise(function(resolve, reject) {
@@ -50,6 +48,8 @@ class HTTPTransport {
 
             const xhr = new XMLHttpRequest();
             const isGet = method === METHODS.GET;
+
+            xhr.withCredentials = true;
 
             xhr.open(
                 method,
@@ -74,8 +74,10 @@ class HTTPTransport {
 
             if (isGet || !data) {
                 xhr.send();
-            } else {
+            } else if (data instanceof FormData) {
                 xhr.send(data);
+            } else {
+                xhr.send(JSON.stringify(data));
             }
         });
     };

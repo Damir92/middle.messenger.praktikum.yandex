@@ -1,7 +1,15 @@
+import { profileType } from '../../../profile/profile.types';
+
 export type chatsItemType = {
-    name: string,
+    id: number,
+    title: string,
     date: string,
     isYours: boolean,
-    message: string,
-    unreadable?: number
+    last_message: {
+        content: string,
+        id: number,
+        time: string,
+        user: profileType
+    } | null,
+    unread_count?: number
 };

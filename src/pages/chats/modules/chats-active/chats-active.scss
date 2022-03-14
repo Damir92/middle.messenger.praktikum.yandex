@@ -1,0 +1,8 @@
+.chats__active {
+  display: grid;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+  grid-template-rows: 44px calc(100vh - 84px);
+}

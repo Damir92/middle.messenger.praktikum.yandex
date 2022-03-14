@@ -8,7 +8,7 @@ import { buttonTemplate } from './button.template';
 import { buttonType } from './button.types';
 
 class Button extends Block {
-    private clickHandler: () => {};
+    private clickHandler: () => void;
 
     constructor(btnProps: buttonType) {
         super('div', {

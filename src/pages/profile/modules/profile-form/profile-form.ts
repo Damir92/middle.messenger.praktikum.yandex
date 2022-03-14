@@ -19,6 +19,7 @@ class ProfileForm extends Block {
         super('div', {
             classNames: formProps.classNames,
             method: formProps.method,
+            data: formProps.data,
             callback: formProps.submitCallback,
         })
 
@@ -40,7 +41,7 @@ class ProfileForm extends Block {
             inputType: 'email',
             name: 'email',
             label: 'Почта',
-            value: 'pochta@yandex.ru',
+            value: this.props.data?.email || '',
             disabled: true,
             error: 'Почта должна соответствовать формату xxx@xxx.xx',
             validateCallback: () => {
@@ -52,7 +53,7 @@ class ProfileForm extends Block {
             inputType: 'text',
             name: 'login',
             label: 'Логин',
-            value: 'ivanivanov',
+            value: this.props.data?.login || '',
             disabled: true,
             error: 'Логин может содержать от 3 до 20 символов без пробелов и спецсимволов',
             validateCallback: () => {
@@ -64,7 +65,7 @@ class ProfileForm extends Block {
             inputType: 'text',
             name: 'first_name',
             label: 'Имя',
-            value: 'Иван',
+            value: this.props.data?.first_name || '',
             disabled: true,
             error: 'Может состоять только из букв, - и _. Начинается только с заглавной буквы',
             validateCallback: () => {
@@ -76,7 +77,7 @@ class ProfileForm extends Block {
             inputType: 'text',
             name: 'second_name',
             label: 'Фамилия',
-            value: 'Иванов',
+            value: this.props.data?.second_name || '',
             disabled: true,
             error: 'Может состоять только из букв, - и _. Начинается только с заглавной буквы',
             validateCallback: () => {
@@ -88,7 +89,7 @@ class ProfileForm extends Block {
             inputType: 'text',
             name: 'display_name',
             label: 'Имя в чате',
-            value: 'Иван',
+            value: this.props.data?.display_name || '',
             disabled: true
         });
 
@@ -96,7 +97,7 @@ class ProfileForm extends Block {
             inputType: 'phone',
             name: 'phone',
             label: 'Телефон',
-            value: '+79099673030',
+            value: this.props.data?.phone || '',
             disabled: true,
             error: 'Может содержать + и от 10 до 15 цифр',
             validateCallback: () => {
@@ -125,7 +126,6 @@ class ProfileForm extends Block {
             inputType: 'password',
             name: 'oldPassword',
             label: 'Старый пароль',
-            value: 'oldpassword',
             disabled: true
         });
 
@@ -196,9 +196,7 @@ class ProfileForm extends Block {
         if (this.isPasswordForm) {
             this.formPassword = new Form({
                 method: this.props.method,
-                submitCallback: () => {
-                    this.props.callback();
-                },
+                submitCallback: this.props.callback,
                 additionalValidation: (elements): boolean => {
                     return this.checkPasswords(elements);
                 }
@@ -206,7 +204,10 @@ class ProfileForm extends Block {
             this.renderElement('', this.formPassword);
             this.createPasswordElements();
         } else {
-            this.formData = new Form({ method: this.props.method, submitCallback: this.props.callback });
+            this.formData = new Form({
+                method: this.props.method,
+                submitCallback: this.props.callback
+            });
             this.renderElement('', this.formData);
             this.createDataElements();
         }

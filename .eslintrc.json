@@ -2,7 +2,7 @@
     "root": true,
     "env": {
         "browser": true,
-        "es6": true
+        "es2021": true
     },
     "extends": ["eslint:recommended"],
     "parser": "@typescript-eslint/parser",
@@ -15,7 +15,7 @@
         "indent": ["error", 4],
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": "error",
-        "max-params": [2, 3],
+        "max-params": [2, 4],
         "arrow-parens": 0
     }
 }
