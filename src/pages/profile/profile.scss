@@ -98,7 +98,7 @@
   overflow: hidden;
 
   background-color: $gray-3;
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M36 2H4a2 2 0 0 0-2 2v21.267l12.655-2.953A11.999 11.999 0 0 1 17.38 22h5.238c.918 0 1.832.105 2.726.314L38 25.267V4a2 2 0 0 0-2-2ZM4 0a4 4 0 0 0-4 4v32a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4H4Zm6.91 14.546a3.636 3.636 0 1 0-.001-7.273 3.636 3.636 0 0 0 0 7.273Z' fill='%23CDCDCD'/%3E%3C/svg%3E");
+  background-image: url("../../../static/svg/icon-avatar.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 40px 40px;
@@ -111,6 +111,14 @@
     height: 1px;
 
     opacity: 0;
+  }
+}
+
+.profile__photo-wrap {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 }
 

@@ -6,7 +6,7 @@ import { template } from './500.template';
 
 import '../../modules/error-page/error-page';
 
-class Error500Page extends Block {
+export class Error500Page extends Block {
     constructor() {
         super('div');
     }
@@ -19,17 +19,3 @@ class Error500Page extends Block {
         this.element.classList.add('error-page');
     }
 }
-
-const render = (query: string, block: Block) => {
-    const root = document.querySelector(query);
-
-    if (root) {
-        root.appendChild(block.getElement());
-    }
-
-    return root;
-};
-
-const page = new Error500Page();
-
-render('.root', page);

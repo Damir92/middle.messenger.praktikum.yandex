@@ -107,6 +107,11 @@ class Block {
         }
     }
 
+    public destroyElement() {
+        const parent = this.element.parentElement;
+        parent?.removeChild(this.element);
+    }
+
     public getElement() {
         return this.element;
     }
@@ -120,6 +125,10 @@ class Block {
                 return typeof value === 'function' ? value.bind(target) : value;
             },
             set(target, prop, value) {
+                if (target[prop] === value) {
+                    return true
+                }
+
                 target[prop] = value;
 
                 self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target});

@@ -6,4 +6,4 @@ export const authForm = `
     h1.form__title Вход
 `;
 
-export const formLink = 'a.form__link(href="#") Нет аккаунта?';
+export const formLink = 'a.form__link(href="/sign-up") Нет аккаунта?';

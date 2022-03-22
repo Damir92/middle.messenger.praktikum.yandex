@@ -4,11 +4,18 @@ import * as pug from 'pug';
 
 import Block from '../../utils/Block';
 
+import { connect } from '../../utils/connect';
+import { Indexed } from '../../services/store';
+
+import { AuthController } from '../../services/auth';
+
 import { Form } from '../../modules/form/form';
 import { FormInput } from '../../components/form-input/form-input';
 import { Button } from '../../components/button/button';
 
 import { inputValidation } from '../../utils/validation';
+
+import { registrationType } from './registration.types';
 
 import { formLink, registrationForm, registrationTemplate } from './registration.template';
 
@@ -17,6 +24,8 @@ class RegistrationPage extends Block {
 
     constructor() {
         super('div');
+
+        this.sendForm = this.sendForm.bind(this);
     }
 
     private inputValidateHandler(component: FormInput): void {
@@ -52,11 +61,16 @@ class RegistrationPage extends Block {
         }
     }
 
+    public sendForm(form: registrationType): void {
+        const { first_name, second_name, login, email, password, phone } = form;
+        new AuthController().signUp({ first_name, second_name, login, email, password, phone })
+    }
+
     private createForm(): void {
         this.form = new Form({
             method: 'POST',
             template: registrationForm,
-            submitCallback: () => {},
+            submitCallback: this.sendForm,
             additionalValidation: (elements): boolean => {
                 return this.checkPasswords(elements);
             }
@@ -171,6 +185,10 @@ class RegistrationPage extends Block {
     }
 
     public render() {
+        console.log(this.props)
+        // setTimeout(() => {
+        //     new AuthController().signOut()
+        // }, 5000)
         return pug.render(registrationTemplate);
     }
 
@@ -185,16 +203,8 @@ class RegistrationPage extends Block {
     }
 }
 
-const render = (query: string, block: Block) => {
-    const root = document.querySelector(query);
+function mapStateToProps(state: Indexed) {
+    return state;
+}
 
-    if (root) {
-        root.appendChild(block.getElement());
-    }
-
-    return root;
-};
-
-const page = new RegistrationPage();
-
-render('.root', page);
+export default connect(RegistrationPage, mapStateToProps);

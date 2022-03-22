@@ -4,6 +4,7 @@ export type formInputType = {
     label: string
     value?: string
     disabled?: boolean
+    autocomplete?: boolean
     error?: string
     withLabelAnimation?: boolean
     validateCallback?: () => void

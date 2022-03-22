@@ -6,7 +6,7 @@ import { template } from './404.template';
 
 import '../../modules/error-page/error-page';
 
-class Error404Page extends Block {
+export class Error404Page extends Block {
     constructor() {
         super('div');
     }
@@ -19,17 +19,3 @@ class Error404Page extends Block {
         this.element.classList.add('error-page');
     }
 }
-
-const render = (query: string, block: Block) => {
-    const root = document.querySelector(query);
-
-    if (root) {
-        root.appendChild(block.getElement());
-    }
-
-    return root;
-};
-
-const page = new Error404Page();
-
-render('.root', page);

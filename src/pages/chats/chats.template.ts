@@ -1,44 +1,18 @@
 export const chatsTemplate = `
 .chats__info
-    .chats__menu
-        a.chats__profile-link(href="#") Профиль
-        form(method="POST" action="/")
-            .chats__form-search
+    .chats__options
+        a.chats__profile-link(href="/settings") Профиль
+        .chats__form-search
+            form(method="POST" action="/")
                 .form-input
                     label
                         span Поиск
                         input(type="text" name="search" autocomplete="off")
+        .chats__form-create
+            form(method="POST" action="/")
+                .form-input
+                    label
+                        span Создать чат
+                        input(type="text" name="title" autocomplete="off")
     .chats__list
-.chats__body
-    .chats__top
-        .chats__friend Вадим
-    .chats__main
-        .chats__messages
-            .chats__messages-date 19 июня
-            .chats__message.chats__message--theirs
-                p Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
-                p Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
-                .chats__message-time 11:56
-            .chats__message.chats__message--yours
-                p Круто!
-                .chats__message-time 12:00
-            .chats__messages-date 19 июня
-            .chats__message.chats__message--theirs
-                p Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
-                p Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
-                .chats__message-time 11:56
-            .chats__message.chats__message--yours
-                p Круто!
-                .chats__message-time 12:00
-            .chats__messages-date 19 июня
-            .chats__message.chats__message--theirs
-                p Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
-                p Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
-                .chats__message-time 11:56
-            .chats__message.chats__message--yours
-                p Круто!
-                .chats__message-time 12:00
-    .chats__bottom`;
-
-export const chatsBottom = `
-.chats__bottom-wrap`;
+.chats__body`;

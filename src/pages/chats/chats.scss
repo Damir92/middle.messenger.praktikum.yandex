@@ -29,7 +29,7 @@
   }
 }
 
-.chats__menu {
+.chats__options {
   position: sticky;
   top: 0;
   z-index: 1;
@@ -69,7 +69,8 @@
   }
 }
 
-.chats__form-search {
+.chats__form-search,
+.chats__form-create {
   label {
     padding: 0;
 
@@ -81,6 +82,8 @@
       align-items: center;
 
       transform: translateX(-50%);
+
+      pointer-events: none;
 
       &::before {
         content: "";
@@ -108,7 +111,13 @@
   }
 }
 
+.chats__form-create {
+  margin-top: 10px;
+}
+
 .chats__body {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -117,13 +126,21 @@
   width: 100%;
   height: 100%;
   padding: 20px;
-}
 
-.chats__top {
-  flex-shrink: 0;
-  padding-bottom: 10px;
+  &::before {
+    content: "Выберите чат чтобы отправить сообщение";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
 
-  border-bottom: 1px solid $gray-2;
+    align-self: center;
+    width: 100%;
+
+    text-align: center;
+
+    transform: translate(-50%, -50%);
+  }
 }
 
 .chats__friend {
@@ -152,22 +169,17 @@
 }
 
 .chats__main {
+  display: flex;
+  flex-direction: column;
+
+  background-color: $background;
+}
+
+.chats__messages {
   height: 100%;
-  padding-bottom: 30px;
-  overflow: -moz-scrollbars-none;
+  padding-right: 15px;
+  padding-bottom: 10px;
   overflow-y: auto;
-
-  -ms-overflow-style: none;
-
-  &::-webkit-scrollbar,
-  &::-webkit-scrollbar-button,
-  &::-webkit-scrollbar-track,
-  &::-webkit-scrollbar-thumb {
-    display: none;
-    width: 0;
-
-    background: transparent;
-  }
 }
 
 .chats__messages-date {
@@ -180,7 +192,7 @@
 }
 
 .chats__message {
-  max-width: 400px;
+  max-width: 75%;
   margin-bottom: 10px;
   padding: 10px;
 
@@ -217,6 +229,7 @@
 .chats__bottom {
   flex-shrink: 0;
 
+  background-color: $background;
   border-top: 1px solid $gray-2;
 }
 
@@ -230,6 +243,7 @@
 
   .form-input {
     position: relative;
+
     flex-shrink: 1;
     width: 100%;
 

@@ -2,37 +2,73 @@ import './chats-item.scss';
 
 import * as pug from 'pug';
 
+import store, { Indexed } from '../../../../services/store';
+import { connect } from '../../../../utils/connect';
+import { ChatsController } from '../../../../services/chat';
+
 import Block from '../../../../utils/Block';
 
 import { chatsItemTemplate } from './chats-item.template';
-
-import { chatsItemType } from './chats-item.types';
-
 class ChatsItem extends Block {
-    constructor(chatsItemProps: chatsItemType) {
+    constructor(chatsItemProps: any) {
         super('button', {
-            name: chatsItemProps.name,
+            id: chatsItemProps.id,
+            title: chatsItemProps.title,
             date: chatsItemProps.date,
             isYours: chatsItemProps.isYours,
-            message: chatsItemProps.message,
-            unreadable: chatsItemProps.unreadable
-        })
+            last_message: chatsItemProps.last_message,
+            unread_count: chatsItemProps.unread_count
+        });
     }
 
     public render() {
         return pug.render(chatsItemTemplate({
-            name: this.props.name,
-            date: this.props.date,
+            id: this.props.id,
+            title: this.props.title,
+            date: this.props.last_message?.time,
             isYours: this.props.isYours,
-            message: this.props.message,
-            unreadable: this.props.unreadable
+            last_message: this.props.last_message,
+            unread_count: this.props.unread_count
         }));
     }
 
     public componentDidMount(): void {
         this.element.classList.add('chats__item');
         this.element.setAttribute('type', 'button');
+        this.element.setAttribute('data-id', this.props.id);
+
+        this.element.addEventListener('click', async () => {
+            if (store.getState().activeChat === this.props.id) {
+                store.set('activeChat', null);
+                store.set('chatToken', null);
+            } else {
+                store.set('chatToken', null);
+
+                const res = await new ChatsController().getChatToken(this.props.id);
+
+                if (res.token) {
+                    store.set('activeChat', this.props.id);
+                    store.set('chatToken', res.token);
+                }
+            }
+        })
+    }
+
+    public componentDidUpdate(): boolean {
+        if (store.getState().activeChat === this.props.id) {
+            this.element.classList.add('is-active');
+        } else {
+            this.element.classList.remove('is-active');
+        }
+
+        return true;
     }
 }
 
-export { ChatsItem }
+function mapStateToProps(state: Indexed) {
+    return {
+        activeChat: state.activeChat,
+    };
+}
+
+export default connect(ChatsItem, mapStateToProps);

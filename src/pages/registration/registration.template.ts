@@ -5,4 +5,4 @@ export const registrationForm = `
 .form
     h1.form__title Регистрация`;
 
-export const formLink = 'a.form__link(href="#") Войти';
+export const formLink = 'a.form__link(href="/") Войти';

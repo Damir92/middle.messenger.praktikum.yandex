@@ -29,6 +29,14 @@
   }
 
   &:hover {
+    &:not(.is-active) {
+      .chats__item-name {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &.is-active {
     &::before {
       background-color: #e4edfd;
     }
