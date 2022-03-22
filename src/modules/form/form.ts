@@ -19,11 +19,7 @@ class Form extends Block {
     }
 
     public render() {
-        if (this.props.template) {
-            return pug.render(this.props.template);
-        }
-
-        return '';
+        return this.props.template ? pug.render(this.props.template) : '';
     }
 
     public formSubmitHandler(evt: Event): void {

@@ -177,21 +177,9 @@
 
 .chats__messages {
   height: 100%;
+  padding-right: 15px;
   padding-bottom: 10px;
-  overflow: -moz-scrollbars-none;
   overflow-y: auto;
-
-  -ms-overflow-style: none;
-
-  &::-webkit-scrollbar,
-  &::-webkit-scrollbar-button,
-  &::-webkit-scrollbar-track,
-  &::-webkit-scrollbar-thumb {
-    display: none;
-    width: 0;
-
-    background: transparent;
-  }
 }
 
 .chats__messages-date {
