@@ -13,6 +13,7 @@ import store from './services/store';
 const router = new Router('.root');
 
 window.onload = async () => {
+    const registrationPageComponent: any = RegistrationPage;
     let chatsPageComponent: any = AuthPage;
     let settingsPageComponent: any = AuthPage;
     let authPageComponent: any = AuthPage;
@@ -29,17 +30,17 @@ window.onload = async () => {
     }
 
     if (window.location.pathname === '/' && currentUser.status === 200) {
-        window.location.href = '/messenger'
-    } else if (['/messenger', '/settings'].includes(window.location.pathname) && currentUser.status !== 200) {
+        window.location.href = '/messenger/'
+    } else if (['/messenger/', '/settings/'].includes(window.location.pathname) && currentUser.status !== 200) {
         window.location.href = '/'
     }
 
     router
         .use('/', authPageComponent)
-        .use('/sign-up', RegistrationPage)
-        .use('/settings', settingsPageComponent)
-        .use('/messenger', chatsPageComponent)
-        .use('/404', Error404Page)
-        .use('/500', Error500Page)
+        .use('/sign-up/', registrationPageComponent)
+        .use('/settings/', settingsPageComponent)
+        .use('/messenger/', chatsPageComponent)
+        .use('/404/', Error404Page)
+        .use('/500/', Error500Page)
         .start();
 };

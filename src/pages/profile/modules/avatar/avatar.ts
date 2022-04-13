@@ -1,18 +1,17 @@
-import * as pug from 'pug';
 import store from '../../../../services/store';
 import { UserController } from '../../../../services/user';
 
 import Block from '../../../../utils/Block';
 
-import { avatarTemplate } from './avatar.template';
+const avatarTemplate = require('./avatar-template.pug');
 
 class Avatar extends Block {
     constructor() {
-        super('form', {});
+        super({ tagName: 'form' });
     }
 
     public render() {
-        return pug.render(avatarTemplate);
+        return avatarTemplate();
     }
 
     public componentDidMount() {
@@ -25,10 +24,12 @@ class Avatar extends Block {
         }
 
         input?.addEventListener('input', async () => {
-            formData.append('avatar', input?.files[0])
+            if (input?.files) {
+                formData.append('avatar', input?.files[0])
 
-            const user = await new UserController().changeAvatar(formData);
-            store.set('user', user)
+                const user = await new UserController().changeAvatar(formData);
+                store.set('user', user)
+            }
         })
     }
 

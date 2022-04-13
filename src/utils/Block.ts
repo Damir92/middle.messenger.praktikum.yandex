@@ -18,7 +18,7 @@ class Block {
         FLOW_RENDER: "flow:render"
     };
 
-    constructor(tagName: string = "div", props = {}) {
+    constructor({ tagName = "div", props = {} }: { tagName?: string, props?: Record<string, any> }) {
         const eventBus = new EventBus();
         this.meta = {
             tagName,

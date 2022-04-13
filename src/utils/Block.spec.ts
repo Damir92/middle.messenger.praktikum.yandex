@@ -7,7 +7,7 @@ class TestBlock extends Block {
     }
 }
 
-const block = new TestBlock('span', {});
+const block = new TestBlock({ tagName: 'span' });
 
 // eslint-disable-next-line no-undef
 describe('Проверка компонента Block', () => {

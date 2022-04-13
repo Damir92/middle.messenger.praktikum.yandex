@@ -1,0 +1,13 @@
+.chats__item-photo
+.chats__item-data
+    .chats__item-info
+        .chats__item-name= title
+        .chats__item-date= date
+    .chats__item-content
+        if !!last_message
+            .chats__item-message
+                if isYours
+                    span.chats__item-yours Вы:
+                | #{last_message}
+            if unread_count
+                .chats__item-count= unread_count

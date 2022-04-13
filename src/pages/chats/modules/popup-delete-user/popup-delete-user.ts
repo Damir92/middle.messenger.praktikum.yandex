@@ -1,5 +1,3 @@
-import * as pug from 'pug';
-
 import store from '../../../../services/store';
 
 import Block from '../../../../utils/Block';
@@ -10,10 +8,10 @@ import { Button } from '../../../../components/button/button';
 import { UserController } from '../../../../services/user';
 import { ChatsController } from '../../../../services/chat';
 
-import { popupDeleteUserTemplate } from './popup-delete-user.template';
-
 import { loginType } from '../../../profile/profile.types';
 import { popupDeleteUserPropsType } from './popup-delete-user.types';
+
+const popupDeleteUserTemplate = require('./popup-delete-user-template.pug');
 
 export class PopupDeleteUser extends Block {
     private readonly closePopupCallback: () => void
@@ -22,7 +20,7 @@ export class PopupDeleteUser extends Block {
     public input: FormInput | null
 
     constructor({ closePopupCallback }: popupDeleteUserPropsType) {
-        super('div')
+        super({})
 
         this.closePopupCallback = closePopupCallback
 
@@ -81,7 +79,7 @@ export class PopupDeleteUser extends Block {
     }
 
     public render(): string {
-        return pug.render(popupDeleteUserTemplate());
+        return popupDeleteUserTemplate();
     }
 
     public componentDidMount(): void {

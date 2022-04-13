@@ -1,5 +1,3 @@
-import * as pug from 'pug';
-
 import store from '../../../../services/store';
 
 import Block from '../../../../utils/Block';
@@ -10,10 +8,10 @@ import { Button } from '../../../../components/button/button';
 import { UserController } from '../../../../services/user';
 import { ChatsController } from '../../../../services/chat';
 
-import { popupAddUserTemplate } from './popup-add-user.template';
-
 import { loginType } from '../../../profile/profile.types';
 import { popupAddUserPropsType } from './popup-add-user.types';
+
+const popupAddUserTemplate = require('./popup-add-user-template.pug');
 
 export class PopupAddUser extends Block {
     private readonly closePopupCallback: () => void
@@ -22,7 +20,7 @@ export class PopupAddUser extends Block {
     public input: FormInput | null
 
     constructor({ closePopupCallback }: popupAddUserPropsType) {
-        super('div')
+        super({})
 
         this.closePopupCallback = closePopupCallback
 
@@ -34,8 +32,13 @@ export class PopupAddUser extends Block {
         const form = new Form({
             method: 'PUT',
             submitCallback: async (data: loginType) => {
+                console.log(data);
+
                 if (data && data.login) {
                     const users = await new UserController().searchUserByLogin(data);
+
+                    console.log(users);
+
 
                     if (users && users.length) {
                         const userId = users[0].id;
@@ -81,7 +84,7 @@ export class PopupAddUser extends Block {
     }
 
     public render(): string {
-        return pug.render(popupAddUserTemplate());
+        return popupAddUserTemplate();
     }
 
     public componentDidMount(): void {

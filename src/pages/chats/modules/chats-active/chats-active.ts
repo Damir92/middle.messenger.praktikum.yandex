@@ -9,10 +9,10 @@ import ChatsMain from '../chats-main/chats-main';
 
 class ChatsActive extends Block {
     private chatsTop: ChatsTop;
-    private chatsMain: ChatsMain;
+    private chatsMain: any;
 
     constructor() {
-        super('div');
+        super({});
 
         this.chatsTop;
         this.chatsMain;
@@ -23,7 +23,7 @@ class ChatsActive extends Block {
 
         if (activeChat) {
             if (!this.chatsTop) this.chatsTop = new ChatsTop();
-            if (!this.chatsMain) this.chatsMain = new ChatsMain();
+            if (!this.chatsMain) this.chatsMain = new ChatsMain({});
 
             this.renderElement('', this.chatsTop);
             this.renderElement('', this.chatsMain);

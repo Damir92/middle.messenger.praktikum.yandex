@@ -1,7 +1,5 @@
 import './profile.scss';
 
-import * as pug from 'pug';
-
 import Block from '../../utils/Block';
 import store, { Indexed } from '../../services/store';
 import { connect } from '../../utils/connect';
@@ -11,17 +9,17 @@ import { AuthController } from '../../services/auth';
 import { Button } from '../../components/button/button';
 import { ProfileForm } from './modules/profile-form/profile-form';
 
-import { profilePage } from './profile.template';
-
 import { changePasswordType, profileClassNamesEnum, profileType } from './profile.types';
 import { UserController } from '../../services/user';
 import { Avatar } from './modules/avatar/avatar';
+
+const profileTemplate = require('./profile-template.pug');
 
 class ProfilePage extends Block {
     private isBackBtnActive: boolean
 
     constructor() {
-        super('div');
+        super({});
 
         this.isBackBtnActive = false;
 
@@ -34,7 +32,7 @@ class ProfilePage extends Block {
     }
 
     public render() {
-        return pug.render(profilePage);
+        return profileTemplate();
     }
 
     private activateForm(className: string): void {

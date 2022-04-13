@@ -1,5 +1,3 @@
-import * as pug from 'pug';
-
 import './form.scss';
 
 import Block from '../../utils/Block';
@@ -10,16 +8,16 @@ import { formType } from './form.types';
 
 class Form extends Block {
     constructor(formProps: formType) {
-        super('form', {
+        super({ tagName: 'form', props: {
             method: formProps.method,
             template: formProps.template,
             callback: formProps.submitCallback,
             additionalValidation: formProps.additionalValidation
-        });
+        } });
     }
 
     public render() {
-        return this.props.template ? pug.render(this.props.template) : '';
+        return this.props.template ? this.props.template() : '';
     }
 
     public formSubmitHandler(evt: Event): void {

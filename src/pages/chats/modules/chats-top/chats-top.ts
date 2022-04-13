@@ -1,19 +1,18 @@
 import './chats-top.scss';
 
-import * as pug from 'pug';
-
 import Block from '../../../../utils/Block';
 import { Button } from '../../../../components/button/button';
 import { Popup } from '../../../../components/popup/popup';
 import { PopupAddUser } from '../popup-add-user/popup-add-user';
 import { PopupDeleteUser } from '../popup-delete-user/popup-delete-user';
 
-import { chatsTopTemplate } from './chats-top.template';
 import store from '../../../../services/store';
+
+const chatsTopTemplate = require('./chats-top-template.pug');
 
 class ChatsTop extends Block {
     constructor() {
-        super('div')
+        super({})
 
         this.renderAddUserPopup = this.renderAddUserPopup.bind(this);
     }
@@ -75,9 +74,9 @@ class ChatsTop extends Block {
     }
 
     public render() {
-        const activeChat = store.getState().chats.find(item => item.id === store.getState().activeChat);
+        const activeChat = (store.getState().chats as any[]).find(item => item.id === store.getState().activeChat);
 
-        return pug.render(chatsTopTemplate(activeChat.title));
+        return chatsTopTemplate({ title: activeChat.title });
     }
 
     public componentDidMount(): void {

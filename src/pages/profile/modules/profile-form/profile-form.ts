@@ -16,12 +16,12 @@ class ProfileForm extends Block {
     private isPasswordForm: boolean;
 
     constructor(formProps: profileFormType) {
-        super('div', {
+        super({ props: {
             classNames: formProps.classNames,
             method: formProps.method,
             data: formProps.data,
             callback: formProps.submitCallback,
-        })
+        } })
 
         this.isPasswordForm = false;
     }

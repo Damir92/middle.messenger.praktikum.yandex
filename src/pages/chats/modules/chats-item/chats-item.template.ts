@@ -1,5 +1,5 @@
-import { chatDate } from '../../../../utils/date';
 
+import { chatDate } from '@/utils/date';
 import { chatsItemType } from './chats-item.types';
 
 export const chatsItemTemplate = ({ title, date, isYours, last_message, unread_count }: chatsItemType) => `

@@ -1,12 +1,10 @@
 import './form-input.scss';
 
-import * as pug from 'pug';
-
 import Block from '../../utils/Block';
 
-import { formInputTemplate } from './form-input.template';
-
 import { formInputType } from './form-input.types';
+
+const formInputTemplate = require('./form-input-template.pug');
 
 class FormInput extends Block {
     private validateHandler: () => {};
@@ -14,8 +12,7 @@ class FormInput extends Block {
     private labelElement: HTMLElement | null;
 
     constructor(inputProps: formInputType) {
-        super('div', {
-            inputType: inputProps.inputType,
+        super({ props: { inputType: inputProps.inputType,
             name: inputProps.name,
             label: inputProps.label,
             value: inputProps.value,
@@ -23,8 +20,7 @@ class FormInput extends Block {
             autocomplete: inputProps.autocomplete,
             error: inputProps.error,
             withLabelAnimation: inputProps.withLabelAnimation,
-            validateCallback: inputProps.validateCallback
-        });
+            validateCallback: inputProps.validateCallback } });
     }
 
     private inputHandler(): void {
@@ -46,7 +42,7 @@ class FormInput extends Block {
     }
 
     public render() {
-        const content = formInputTemplate({
+        return formInputTemplate({
             inputType: this.props.inputType,
             name: this.props.name,
             label: this.props.label,
@@ -55,7 +51,6 @@ class FormInput extends Block {
             autocomplete: this.props.autocomplete,
             error: this.props.error
         })
-        return pug.render(content);
     }
 
     public componentDidMount(): void {

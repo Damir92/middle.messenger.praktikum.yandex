@@ -1,7 +1,5 @@
 import './registration.scss';
 
-import * as pug from 'pug';
-
 import Block from '../../utils/Block';
 
 import { connect } from '../../utils/connect';
@@ -17,13 +15,15 @@ import { inputValidation } from '../../utils/validation';
 
 import { registrationType } from './registration.types';
 
-import { formLink, registrationForm, registrationTemplate } from './registration.template';
+const registationFormLinkTemplate = require('./registration-form-link-template.pug');
+const registrationTemplate = require('./registration-template.pug');
+const registrationFormTemplate = require('./registration-form-template.pug');
 
 class RegistrationPage extends Block {
     private form: Form
 
     constructor() {
-        super('div');
+        super({});
 
         this.sendForm = this.sendForm.bind(this);
     }
@@ -69,7 +69,7 @@ class RegistrationPage extends Block {
     private createForm(): void {
         this.form = new Form({
             method: 'POST',
-            template: registrationForm,
+            template: registrationFormTemplate,
             submitCallback: this.sendForm,
             additionalValidation: (elements): boolean => {
                 return this.checkPasswords(elements);
@@ -181,15 +181,14 @@ class RegistrationPage extends Block {
         this.renderElement('.form', inputRequirePassword);
         this.renderElement('.form', buttonSubmit);
 
-        this.element.querySelector('.form')?.insertAdjacentHTML('beforeend', pug.render(formLink));
+        this.element.querySelector('.form')?.insertAdjacentHTML('beforeend', registationFormLinkTemplate());
     }
 
     public render() {
-        console.log(this.props)
         // setTimeout(() => {
         //     new AuthController().signOut()
         // }, 5000)
-        return pug.render(registrationTemplate);
+        return registrationTemplate();
     }
 
     public componentDidMount(): void {

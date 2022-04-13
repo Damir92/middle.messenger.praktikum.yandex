@@ -1,18 +1,16 @@
-import * as pug from 'pug';
-
 import Block from '../../utils/Block';
-
-import { template } from './500.template';
 
 import '../../modules/error-page/error-page';
 
+const page500Template = require('./page-500-template.pug');
+
 export class Error500Page extends Block {
     constructor() {
-        super('div');
+        super({});
     }
 
     public render() {
-        return pug.render(template);
+        return page500Template();
     }
 
     public componentDidMount(): void {
