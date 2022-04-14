@@ -1,3 +1,3 @@
-export type popupDeleteUserPropsType = {
+export type PopupDeleteUserPropsType = {
     closePopupCallback: () => void
 };

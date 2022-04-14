@@ -1,4 +1,4 @@
-export type profileFormType = {
+export type ProfileFormType = {
     classNames: string[]
     method: string
     data: Record<string, string | number>

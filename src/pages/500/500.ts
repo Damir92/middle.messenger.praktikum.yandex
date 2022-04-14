@@ -6,7 +6,7 @@ const page500Template = require('./page-500-template.pug');
 
 export class Error500Page extends Block {
     constructor() {
-        super({});
+        super();
     }
 
     public render() {

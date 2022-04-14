@@ -6,7 +6,7 @@ import { Form } from '../../../../modules/form/form';
 import { FormInput } from '../../../../components/form-input/form-input';
 import { Button } from '../../../../components/button/button';
 
-import { profileFormType } from './profile-form.types';
+import { ProfileFormType } from './profile-form.types';
 
 import { inputValidation } from '../../../../utils/validation';
 
@@ -15,7 +15,7 @@ class ProfileForm extends Block {
     private formPassword: Form;
     private isPasswordForm: boolean;
 
-    constructor(formProps: profileFormType) {
+    constructor(formProps: ProfileFormType) {
         super({ props: {
             classNames: formProps.classNames,
             method: formProps.method,

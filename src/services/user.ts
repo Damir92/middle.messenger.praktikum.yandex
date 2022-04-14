@@ -1,9 +1,9 @@
 import { UserAPI } from '../api/user';
 
-import { changePasswordType, loginType, profileType } from '../pages/profile/profile.types';
+import { ChangePasswordType, LoginType, ProfileType } from '../pages/profile/profile.types';
 
 export class UserController {
-    public async changeProfile(payload: profileType) {
+    public async changeProfile(payload: ProfileType) {
         let result: any = null;
         await new UserAPI().changeProfile(payload)
             .then((data: any) => {
@@ -13,7 +13,7 @@ export class UserController {
         return result;
     }
 
-    public async changePassword(payload: changePasswordType) {
+    public async changePassword(payload: ChangePasswordType) {
         let result: any = null;
 
         await new UserAPI().changePassword(payload)
@@ -35,7 +35,7 @@ export class UserController {
         return result;
     }
 
-    public async searchUserByLogin(payload: loginType) {
+    public async searchUserByLogin(payload: LoginType) {
         let result: any = null;
 
         await new UserAPI().searchUserByLogin(payload)

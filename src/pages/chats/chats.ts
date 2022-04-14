@@ -7,7 +7,7 @@ import ChatsItem from './modules/chats-item/chats-item';
 
 import { ChatsController } from '../../services/chat';
 import ChatsActive from './modules/chats-active/chats-active';
-import { chatsItemType } from './modules/chats-item/chats-item.types';
+import { ChatsItemType } from './modules/chats-item/chats-item.types';
 
 const chatsTemplate = require('./chats-template.pug');
 
@@ -20,7 +20,7 @@ export class ChatsPage extends Block {
         const chats = await new ChatsController().getChats();
         store.set('chats', chats)
 
-        chats?.forEach((item: chatsItemType) => {
+        chats?.forEach((item: ChatsItemType) => {
             const chatsItem = new ChatsItem({ props: item });
             this.renderElement('.chats__list', chatsItem);
         });

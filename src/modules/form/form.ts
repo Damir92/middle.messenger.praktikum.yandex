@@ -4,10 +4,10 @@ import Block from '../../utils/Block';
 
 import { inputValidation } from '../../utils/validation';
 
-import { formType } from './form.types';
+import { FormType } from './form.types';
 
 class Form extends Block {
-    constructor(formProps: formType) {
+    constructor(formProps: FormType) {
         super({ tagName: 'form', props: {
             method: formProps.method,
             template: formProps.template,

@@ -9,7 +9,7 @@ import { inputValidation } from '../../utils/validation';
 
 import { AuthController } from '../../services/auth';
 
-import { authType } from './auth.types';
+import { AuthType } from './auth.types';
 
 const formLinkTemplate = require('./auth-form-link-template.pug');
 const authPageTemplate = require('./auth-page-template.pug');
@@ -18,7 +18,7 @@ export class AuthPage extends Block {
     private form: Form
 
     constructor() {
-        super({});
+        super();
 
         this.sendForm = this.sendForm.bind(this);
     }
@@ -33,7 +33,7 @@ export class AuthPage extends Block {
         }
     }
 
-    public sendForm(form: authType): void {
+    public sendForm(form: AuthType): void {
         console.log('form', form)
         const { login, password } = form;
         console.log(AuthController)

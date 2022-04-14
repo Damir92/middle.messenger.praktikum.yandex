@@ -13,7 +13,7 @@ import { Button } from '../../components/button/button';
 
 import { inputValidation } from '../../utils/validation';
 
-import { registrationType } from './registration.types';
+import { RegistrationType } from './registration.types';
 
 const registationFormLinkTemplate = require('./registration-form-link-template.pug');
 const registrationTemplate = require('./registration-template.pug');
@@ -23,7 +23,7 @@ class RegistrationPage extends Block {
     private form: Form
 
     constructor() {
-        super({});
+        super();
 
         this.sendForm = this.sendForm.bind(this);
     }
@@ -61,7 +61,7 @@ class RegistrationPage extends Block {
         }
     }
 
-    public sendForm(form: registrationType): void {
+    public sendForm(form: RegistrationType): void {
         const { first_name, second_name, login, email, password, phone } = form;
         new AuthController().signUp({ first_name, second_name, login, email, password, phone })
     }
@@ -185,9 +185,6 @@ class RegistrationPage extends Block {
     }
 
     public render() {
-        // setTimeout(() => {
-        //     new AuthController().signOut()
-        // }, 5000)
         return registrationTemplate();
     }
 

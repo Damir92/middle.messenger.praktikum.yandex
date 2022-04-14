@@ -9,7 +9,7 @@ import { AuthController } from '../../services/auth';
 import { Button } from '../../components/button/button';
 import { ProfileForm } from './modules/profile-form/profile-form';
 
-import { changePasswordType, profileClassNamesEnum, profileType } from './profile.types';
+import { ChangePasswordType, ProfileClassNamesEnum, ProfileType } from './profile.types';
 import { UserController } from '../../services/user';
 import { Avatar } from './modules/avatar/avatar';
 
@@ -19,7 +19,7 @@ class ProfilePage extends Block {
     private isBackBtnActive: boolean
 
     constructor() {
-        super({});
+        super();
 
         this.isBackBtnActive = false;
 
@@ -43,7 +43,7 @@ class ProfilePage extends Block {
     }
 
     public editBtnClickHandler(): void {
-        this.activateForm(profileClassNamesEnum.EDIT);
+        this.activateForm(ProfileClassNamesEnum.EDIT);
         this.isBackBtnActive = true
     }
 
@@ -51,12 +51,12 @@ class ProfilePage extends Block {
         new AuthController().signOut()
     }
 
-    public async changeProfileHandler(data: profileType) {
+    public async changeProfileHandler(data: ProfileType) {
         const user = await new UserController().changeProfile(data);
         store.set('user', user)
     }
 
-    public async changePasswordHandler(data: changePasswordType) {
+    public async changePasswordHandler(data: ChangePasswordType) {
         await new UserController().changePassword(data);
     }
 
@@ -68,14 +68,14 @@ class ProfilePage extends Block {
     }
 
     private editPasswordClickHandler(): void {
-        this.activateForm(profileClassNamesEnum.EDIT_PASSWORD)
+        this.activateForm(ProfileClassNamesEnum.EDIT_PASSWORD)
         this.isBackBtnActive = true
     }
 
     private backBtnClickHandler(): void {
         if (this.isBackBtnActive) {
             const inputs: HTMLInputElement[] = [].slice.call(this.element.querySelectorAll('form input'));
-            this.element.classList.remove(profileClassNamesEnum.EDIT, profileClassNamesEnum.EDIT_PASSWORD);
+            this.element.classList.remove(ProfileClassNamesEnum.EDIT, ProfileClassNamesEnum.EDIT_PASSWORD);
             inputs.forEach(item => item.setAttribute('disabled', 'true'));
             this.isBackBtnActive = false;
         } else {
@@ -138,7 +138,7 @@ class ProfilePage extends Block {
             classNames: ['profile-form', 'profile-form--data'],
             method: 'PUT',
             data: store.getState().user,
-            submitCallback: (data: profileType) => {
+            submitCallback: (data: ProfileType) => {
                 this.changeProfileHandler(data)
                 this.backBtnClickHandler()
             }
@@ -149,7 +149,7 @@ class ProfilePage extends Block {
             classNames: ['profile-form', 'profile-form--password'],
             method: 'PUT',
             data: store.getState().user,
-            submitCallback: (data: changePasswordType) => {
+            submitCallback: (data: ChangePasswordType) => {
                 this.changePasswordHandler(data)
                 this.backBtnClickHandler()
             }
@@ -169,7 +169,7 @@ class ProfilePage extends Block {
             classNames: ['profile-form', 'profile-form--data'],
             method: 'PUT',
             data: store.getState().user,
-            submitCallback: (data: profileType) => {
+            submitCallback: (data: ProfileType) => {
                 this.changeProfileHandler(data)
                 this.backBtnClickHandler()
             }

@@ -1,4 +1,4 @@
-export type registrationType = {
+export type RegistrationType = {
     first_name: string,
     second_name: string,
     login: string,

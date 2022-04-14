@@ -1,11 +1,11 @@
-export enum messageTypeEnum {
+export enum MessageTypeEnum {
     MESSAGE = 'message'
 }
 
-export type chatsItemType = {
+export type ChatsItemType = {
     content: string,
     id: number,
     time: string,
-    type: messageTypeEnum
+    type: MessageTypeEnum
     user_id: number
 };

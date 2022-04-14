@@ -12,7 +12,7 @@ class ChatsActive extends Block {
     private chatsMain: any;
 
     constructor() {
-        super({});
+        super();
 
         this.chatsTop;
         this.chatsMain;

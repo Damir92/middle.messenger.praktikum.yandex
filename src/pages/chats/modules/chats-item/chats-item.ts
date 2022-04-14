@@ -6,12 +6,12 @@ import { ChatsController } from '../../../../services/chat';
 
 import Block from '../../../../utils/Block';
 
-import { chatsItemType } from './chats-item.types';
+import { ChatsItemType } from './chats-item.types';
 import { chatDate } from '@/utils/date';
 
 const chatsItemTemplate = require('./chats-item-template.pug');
 class ChatsItem extends Block {
-    constructor({ tagName = 'button', props }: { tagName?: string, props: chatsItemType }) {
+    constructor({ tagName = 'button', props }: { tagName?: string, props: ChatsItemType }) {
         super({ tagName, props: {
             id: props.id,
             title: props.title,

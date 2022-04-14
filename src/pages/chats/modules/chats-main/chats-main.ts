@@ -11,7 +11,7 @@ import { ChatsController } from '../../../../services/chat';
 import { getDate, getTime } from '../../../../utils/date';
 import { inputValidation } from '../../../../utils/validation';
 
-import { chatsItemType } from './chats-main.types';
+import { ChatsItemType } from './chats-main.types';
 
 const messageTemplate = require('./message-template.pug');
 const chatsMainTemplate = require('./chats-main-template.pug');
@@ -23,14 +23,14 @@ export class ChatsMain extends Block {
     private token: string | null;
     private userId: number | null;
     private prevDate: string;
-    private oldMessages: chatsItemType[];
-    private newMessages: chatsItemType[];
+    private oldMessages: ChatsItemType[];
+    private newMessages: ChatsItemType[];
     private rerender: boolean;
     private messageListenerFn: () => void;
     private scrollListenerFn: () => void;
 
     constructor() {
-        super({});
+        super();
 
         this.messagesCount;
         this.socket = null;

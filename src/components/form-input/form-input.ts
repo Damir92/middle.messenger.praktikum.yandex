@@ -2,7 +2,7 @@ import './form-input.scss';
 
 import Block from '../../utils/Block';
 
-import { formInputType } from './form-input.types';
+import { FormInputType } from './form-input.types';
 
 const formInputTemplate = require('./form-input-template.pug');
 
@@ -11,7 +11,7 @@ class FormInput extends Block {
     private inputElement: HTMLInputElement | null;
     private labelElement: HTMLElement | null;
 
-    constructor(inputProps: formInputType) {
+    constructor(inputProps: FormInputType) {
         super({ props: { inputType: inputProps.inputType,
             name: inputProps.name,
             label: inputProps.label,

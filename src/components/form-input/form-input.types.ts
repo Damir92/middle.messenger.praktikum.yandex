@@ -1,4 +1,4 @@
-export type formInputType = {
+export type FormInputType = {
     inputType: string
     name: string
     label: string

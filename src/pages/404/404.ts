@@ -6,7 +6,7 @@ const page404Template = require('./page-404-template.pug');
 
 export class Error404Page extends Block {
     constructor() {
-        super({});
+        super();
     }
 
     public render() {

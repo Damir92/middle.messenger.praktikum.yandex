@@ -2,14 +2,14 @@ import './button.scss';
 
 import Block from '../../utils/Block';
 
-import { buttonType } from './button.types';
+import { ButtonType } from './button.types';
 
 const buttonTemplate = require('./button-template.pug');
 
 class Button extends Block {
     private clickHandler: () => void;
 
-    constructor(btnProps: buttonType) {
+    constructor(btnProps: ButtonType) {
         super({ props: {
             classNames: btnProps.classNames,
             btnType: btnProps.btnType,

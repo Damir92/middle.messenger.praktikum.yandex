@@ -8,8 +8,8 @@ import { Button } from '../../../../components/button/button';
 import { UserController } from '../../../../services/user';
 import { ChatsController } from '../../../../services/chat';
 
-import { loginType } from '../../../profile/profile.types';
-import { popupDeleteUserPropsType } from './popup-delete-user.types';
+import { LoginType } from '../../../profile/profile.types';
+import { PopupDeleteUserPropsType } from './popup-delete-user.types';
 
 const popupDeleteUserTemplate = require('./popup-delete-user-template.pug');
 
@@ -19,7 +19,7 @@ export class PopupDeleteUser extends Block {
     public form: Form | null
     public input: FormInput | null
 
-    constructor({ closePopupCallback }: popupDeleteUserPropsType) {
+    constructor({ closePopupCallback }: PopupDeleteUserPropsType) {
         super({})
 
         this.closePopupCallback = closePopupCallback
@@ -31,7 +31,7 @@ export class PopupDeleteUser extends Block {
     public createForm(): void {
         const form = new Form({
             method: 'PUT',
-            submitCallback: async (data: loginType) => {
+            submitCallback: async (data: LoginType) => {
                 if (data && data.login) {
                     const users = await new UserController().searchUserByLogin(data);
 
