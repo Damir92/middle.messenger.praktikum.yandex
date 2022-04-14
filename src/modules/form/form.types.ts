@@ -1,4 +1,4 @@
-export type formType = {
+export type FormType = {
     method: string
     template?: string
     submitCallback?: (payload?: Record<string, string>) => void

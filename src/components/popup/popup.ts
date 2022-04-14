@@ -1,17 +1,16 @@
 import './popup.scss';
 
-import * as pug from 'pug';
-
 import Block from '../../utils/Block';
-import { popupTemplate } from './popup.template';
+
+const popupTemplate = require('./popup-template.pug');
 
 export class Popup extends Block {
     constructor() {
-        super('div')
+        super({})
     }
 
     public render(): string {
-        return pug.render(popupTemplate());
+        return popupTemplate();
     }
 
     public componentDidMount(): void {

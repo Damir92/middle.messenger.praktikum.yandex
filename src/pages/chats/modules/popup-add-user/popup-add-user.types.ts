@@ -1,3 +1,3 @@
-export type popupAddUserPropsType = {
+export type PopupAddUserPropsType = {
     closePopupCallback: () => void
 };

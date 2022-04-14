@@ -1,0 +1,7 @@
+- var classes = [ 'chats__message', isYours ? 'chats__message--yours' : 'chats__message--theirs' ]
+
+if date
+    .chats__messages-date= date
+div(class=classes)
+    p= text
+    .chats__message-time= time

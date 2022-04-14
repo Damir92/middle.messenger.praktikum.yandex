@@ -9,6 +9,8 @@ export class ChatsController {
                 result = JSON.parse(data.response);
             })
 
+        console.log(result);
+
         return result;
     }
 

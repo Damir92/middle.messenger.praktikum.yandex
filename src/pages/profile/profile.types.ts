@@ -1,9 +1,9 @@
-export enum profileClassNamesEnum {
+export enum ProfileClassNamesEnum {
     'EDIT' = 'is-edit',
     'EDIT_PASSWORD' = 'is-edit-password'
 }
 
-export type profileType = {
+export type ProfileType = {
     first_name: string,
     second_name: string,
     display_name: string,
@@ -12,11 +12,11 @@ export type profileType = {
     phone: string
 };
 
-export type changePasswordType = {
+export type ChangePasswordType = {
     oldPassword: 'string',
     newPassword: 'string'
 }
 
-export type loginType = {
+export type LoginType = {
     login: string
 }

@@ -1,5 +1,3 @@
-import * as pug from 'pug';
-
 import './auth.scss'
 
 import Block from '../../utils/Block';
@@ -11,14 +9,16 @@ import { inputValidation } from '../../utils/validation';
 
 import { AuthController } from '../../services/auth';
 
-import { authForm, authPage, formLink } from './auth.template';
-import { authType } from './auth.types';
+import { AuthType } from './auth.types';
 
+const formLinkTemplate = require('./auth-form-link-template.pug');
+const authPageTemplate = require('./auth-page-template.pug');
+const authFormTemplate = require('./auth-form-template.pug');
 export class AuthPage extends Block {
     private form: Form
 
     constructor() {
-        super('div');
+        super();
 
         this.sendForm = this.sendForm.bind(this);
     }
@@ -33,7 +33,7 @@ export class AuthPage extends Block {
         }
     }
 
-    public sendForm(form: authType): void {
+    public sendForm(form: AuthType): void {
         console.log('form', form)
         const { login, password } = form;
         console.log(AuthController)
@@ -43,7 +43,7 @@ export class AuthPage extends Block {
     private createForm(): void {
         this.form = new Form({
             method: 'POST',
-            template: authForm,
+            template: authFormTemplate,
             submitCallback: this.sendForm
         });
 
@@ -86,11 +86,11 @@ export class AuthPage extends Block {
         this.renderElement('.form', inputPassword);
         this.renderElement('.form', buttonSubmit);
 
-        this.element.querySelector('.form')?.insertAdjacentHTML('beforeend', pug.render(formLink));
+        this.element.querySelector('.form')?.insertAdjacentHTML('beforeend', formLinkTemplate());
     }
 
     public render() {
-        return pug.render(authPage);
+        return authPageTemplate();
     }
 
     public componentDidMount(): void {

@@ -2,12 +2,12 @@ import './chats-menu.scss';
 
 import * as pug from 'pug';
 
-import { Button } from '../../../../components/button/button';
-import Block from '../../../../utils/Block';
+import Block from '@/utils/Block';
+import { Button } from '@/components/button/button';
 
 export class ChatsMenu extends Block {
     constructor() {
-        super('div')
+        super({})
     }
 
     private menuBtnListener() {

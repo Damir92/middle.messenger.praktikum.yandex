@@ -76,7 +76,6 @@ export class Router {
 
     public start() {
         window.onpopstate = ((evt: any) => {
-            console.log(evt)
             this.onRoute(evt.currentTarget.location.pathname);
         });
 

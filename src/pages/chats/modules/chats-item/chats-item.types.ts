@@ -1,6 +1,6 @@
-import { profileType } from '../../../profile/profile.types';
+import { ProfileType } from '../../../profile/profile.types';
 
-export type chatsItemType = {
+export type ChatsItemType = {
     id: number,
     title: string,
     date: string,
@@ -9,7 +9,7 @@ export type chatsItemType = {
         content: string,
         id: number,
         time: string,
-        user: profileType
+        user: ProfileType
     } | null,
     unread_count?: number
 };

@@ -1,0 +1,8 @@
+label
+    span= label
+    if !!autocomplete
+        input(type=inputType name=name value=value disabled = disabled ? '' : null)
+    else
+        input(type=inputType name=name value=value autocomplete=off disabled = disabled ? '' : null)
+if !!error
+    .form-error= error

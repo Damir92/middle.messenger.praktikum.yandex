@@ -1,5 +1,3 @@
-import * as pug from 'pug';
-
 import { WebSocketComponent } from '../../../../api/web-socket';
 import store, { Indexed } from '../../../../services/store';
 import { connect } from '../../../../utils/connect';
@@ -13,10 +11,11 @@ import { ChatsController } from '../../../../services/chat';
 import { getDate, getTime } from '../../../../utils/date';
 import { inputValidation } from '../../../../utils/validation';
 
-import { chatsItemType } from './chats-main.types';
+import { ChatsItemType } from './chats-main.types';
 
-import { chatsBottomTemplate, messageTemplate } from './chats-main.template';
-import { chatsMainTemplate } from './chats-main.template';
+const messageTemplate = require('./message-template.pug');
+const chatsMainTemplate = require('./chats-main-template.pug');
+const chatsBottomTemplate = require('./chats-bottom-template.pug');
 
 export class ChatsMain extends Block {
     private messagesCount: number;
@@ -24,14 +23,14 @@ export class ChatsMain extends Block {
     private token: string | null;
     private userId: number | null;
     private prevDate: string;
-    private oldMessages: chatsItemType[];
-    private newMessages: chatsItemType[];
+    private oldMessages: ChatsItemType[];
+    private newMessages: ChatsItemType[];
     private rerender: boolean;
     private messageListenerFn: () => void;
     private scrollListenerFn: () => void;
 
     constructor() {
-        super('div');
+        super();
 
         this.messagesCount;
         this.socket = null;
@@ -65,7 +64,7 @@ export class ChatsMain extends Block {
         let inputMessage: FormInput;
         const messageForm = new Form({
             method: 'POST',
-            template: chatsBottomTemplate(),
+            template: chatsBottomTemplate,
             submitCallback: (evt) => {
                 if (evt?.message) {
                     this.socket?.sendMessage(evt.message, 'message');
@@ -116,7 +115,12 @@ export class ChatsMain extends Block {
             messageDate = humanizeDate;
         }
 
-        const html = pug.render(messageTemplate(message.content, humanizeTime, messageDate, this.userId === message.user_id));
+        const html = messageTemplate({
+            text: message.content,
+            time: humanizeTime,
+            date: messageDate,
+            isYours: this.userId === message.user_id || this.userId === message.userId
+        });
 
         this.element.querySelector('.chats__messages')?.insertAdjacentHTML('beforeend', html);
 
@@ -131,6 +135,9 @@ export class ChatsMain extends Block {
 
     private messageListener(evt: MessageEvent) {
         const messages = JSON.parse(evt.data);
+
+        console.log('messageListener', messages);
+
 
         if (Array.isArray(messages) && messages.length) {
             const container: HTMLElement | null = this.getElement().querySelector('.chats__messages');
@@ -214,7 +221,7 @@ export class ChatsMain extends Block {
     }
 
     public render(): string {
-        return pug.render(chatsMainTemplate());
+        return chatsMainTemplate();
     }
 
     public componentDidMount() {

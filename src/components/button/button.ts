@@ -1,31 +1,29 @@
 import './button.scss';
 
-import * as pug from 'pug';
-
 import Block from '../../utils/Block';
 
-import { buttonTemplate } from './button.template';
-import { buttonType } from './button.types';
+import { ButtonType } from './button.types';
+
+const buttonTemplate = require('./button-template.pug');
 
 class Button extends Block {
     private clickHandler: () => void;
 
-    constructor(btnProps: buttonType) {
-        super('div', {
+    constructor(btnProps: ButtonType) {
+        super({ props: {
             classNames: btnProps.classNames,
             btnType: btnProps.btnType,
             text: btnProps.text,
             callback: btnProps.clickCallback
-        });
+        } });
     }
 
     public render() {
-        const content = buttonTemplate({
-            classNames: this.props.classNames,
+        return buttonTemplate({
+            classNames: this.props.classNames.join(' '),
             btnType: this.props.btnType,
             text: this.props.text
-        })
-        return pug.render(content)
+        });
     }
 
     public componentDidMount() {

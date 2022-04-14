@@ -1,5 +1,3 @@
-import * as pug from 'pug';
-
 import store from '../../../../services/store';
 
 import Block from '../../../../utils/Block';
@@ -10,10 +8,10 @@ import { Button } from '../../../../components/button/button';
 import { UserController } from '../../../../services/user';
 import { ChatsController } from '../../../../services/chat';
 
-import { popupAddUserTemplate } from './popup-add-user.template';
+import { LoginType } from '../../../profile/profile.types';
+import { PopupAddUserPropsType } from './popup-add-user.types';
 
-import { loginType } from '../../../profile/profile.types';
-import { popupAddUserPropsType } from './popup-add-user.types';
+const popupAddUserTemplate = require('./popup-add-user-template.pug');
 
 export class PopupAddUser extends Block {
     private readonly closePopupCallback: () => void
@@ -21,8 +19,8 @@ export class PopupAddUser extends Block {
     public form: Form | null
     public input: FormInput | null
 
-    constructor({ closePopupCallback }: popupAddUserPropsType) {
-        super('div')
+    constructor({ closePopupCallback }: PopupAddUserPropsType) {
+        super({})
 
         this.closePopupCallback = closePopupCallback
 
@@ -33,9 +31,14 @@ export class PopupAddUser extends Block {
     public createForm(): void {
         const form = new Form({
             method: 'PUT',
-            submitCallback: async (data: loginType) => {
+            submitCallback: async (data: LoginType) => {
+                console.log(data);
+
                 if (data && data.login) {
                     const users = await new UserController().searchUserByLogin(data);
+
+                    console.log(users);
+
 
                     if (users && users.length) {
                         const userId = users[0].id;
@@ -81,7 +84,7 @@ export class PopupAddUser extends Block {
     }
 
     public render(): string {
-        return pug.render(popupAddUserTemplate());
+        return popupAddUserTemplate();
     }
 
     public componentDidMount(): void {
